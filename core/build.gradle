@@ -1,8 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'maven'
 
 
@@ -18,7 +15,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
     }
@@ -38,11 +35,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    dataBinding {
-        enabled = true
+
+    buildFeatures {
+        dataBinding = true
     }
 }
 
@@ -51,18 +46,20 @@ dependencies {
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["room-runtime"]
     api rootProject.ext.dependencies["retrofit"]
-
     api rootProject.ext.dependencies["converter-gson"]
     api rootProject.ext.dependencies["lifecycle-runtime"]
+    api rootProject.ext.dependencies["lifecycle-runtime"]
     api rootProject.ext.dependencies["lifecycle-extensions"]
+    api rootProject.ext.dependencies["autoservice"]
 
     api rootProject.ext.dependencies["hilt-android"]
     api rootProject.ext.dependencies["hilt-common"]
     api rootProject.ext.dependencies["hilt-lifecycle-viewmodel"]
 
-    kapt rootProject.ext.dependencies["hilt-android-compiler"]
-    kapt rootProject.ext.dependencies["hilt-compiler"]
-    kapt rootProject.ext.dependencies["room-compiler"]
+    annotationProcessor rootProject.ext.dependencies["hilt-android-compiler"]
+    annotationProcessor rootProject.ext.dependencies["hilt-compiler"]
+    annotationProcessor rootProject.ext.dependencies["room-compiler"]
+    annotationProcessor rootProject.ext.dependencies["autoservice"]
 }
 
 uploadArchives {  // 本地nexus配置

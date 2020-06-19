@@ -14,6 +14,11 @@ import com.docker.core.di.module.net.response.ApiResponse;
 import com.docker.core.di.module.net.response.BaseResponse;
 import com.docker.core.utils.AppExecutors;
 import com.docker.core.utils.IOUtils;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhangxindang on 2018/12/25.
@@ -99,10 +104,10 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
                         result.addSource(apiResponse,
                                 newData -> {
                                     result.removeSource(apiResponse);
-                                    setZoneValue(Resource.bussinessError(response.body.getErrmsg(), (ResultType) response.body.getRst()));
+                                    setZoneValue(Resource.bussinessError(response.body.getErrmsg(), response.body.getRst()));
                                 });
                     } else {
-                        setZoneValue(Resource.success((ResultType) response.body.getRst(), response.body.getErrmsg()));
+                        setZoneValue(Resource.success(response.body.getRst(), response.body.getErrmsg()));
                     }
                 } else {
                     onFetchFailed();
@@ -204,30 +209,75 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
 
     private void fetchFromNetwork() {
         LiveData<ApiResponse<BaseResponse<ResultType>>> apiResponse = createCall();
-        result.addSource(apiResponse, response -> {
-            result.removeSource(apiResponse);
-            if (response.isSuccessful()) {
-                if (Integer.parseInt(response.body.getErrno()) != 0) { // bussiness error
-                    onFetchNetFailed(0, response);
-                } else {
-                    appExecutors.diskIO().execute(() -> {
-                        saveCallResult(response);
-                        appExecutors.mainThread().execute(() -> {
-                                    LiveData<ApiResponse<BaseResponse<ResultType>>> dbSource1 = loadFromDb();
-                                    result.addSource(dbSource1,
-                                            newData -> {
-                                                result.removeSource(dbSource1);
-                                                onFetchNetSuccess(newData);
-                                            });
-                                }
-                        );
-                    });
-                }
+        result.addSource(apiResponse, (ApiResponse<BaseResponse<ResultType>> response) -> {
+            if (response.isSuccessful() && response.call != null) {
+                result.setValue(Resource.loading(response.call));
             } else {
-                onFetchFailed();
-                onFetchNetFailed(1, response);
+                result.removeSource(apiResponse);
+                if (response.isSuccessful() && response.body != null) {
+                    if (response != null && response.body.getErrno() != null && Integer.parseInt(response.body.getErrno()) != 0) { // bussiness error
+                        onFetchNetFailed(0, response);
+//                        result.addSource(apiResponse,
+//                                newData -> {
+//                                    result.removeSource(apiResponse);
+//                                    setZoneValue(Resource.bussinessError(response.body.getErrmsg(), response.body.getRst()));
+//                                });
+                    } else {
+//                        setZoneValue(Resource.success(response.body.getRst(), response.body.getErrmsg()));
+                        appExecutors.diskIO().execute(() -> {
+                            saveCallResult(response);
+                            appExecutors.mainThread().execute(() -> {
+                                        LiveData<ApiResponse<BaseResponse<ResultType>>> dbSource1 = loadFromDb();
+                                        result.addSource(dbSource1,
+                                                newData -> {
+                                                    result.removeSource(dbSource1);
+                                                    onFetchNetSuccess(newData);
+                                                });
+                                    }
+                            );
+                        });
+                    }
+                } else {
+                    onFetchFailed();
+//                    result.addSource(apiResponse,
+////                            newData -> {
+////                                result.removeSource(apiResponse);
+////                                setZoneValue(Resource.error(response.errorMessage, null));
+////                            });
+
+                    onFetchFailed();
+                    onFetchNetFailed(1, response);
+                }
             }
+
         });
+
+
+//        LiveData<ApiResponse<BaseResponse<ResultType>>> apiResponse = createCall();
+//        result.addSource(apiResponse, response -> {
+//            result.removeSource(apiResponse);
+//            if (response.isSuccessful()) {
+//                if (response.body == null || Integer.parseInt(response.body.getErrno()) != 0) { // bussiness error
+//                    onFetchNetFailed(0, response);
+//                } else {
+//                    appExecutors.diskIO().execute(() -> {
+//                        saveCallResult(response);
+//                        appExecutors.mainThread().execute(() -> {
+//                                    LiveData<ApiResponse<BaseResponse<ResultType>>> dbSource1 = loadFromDb();
+//                                    result.addSource(dbSource1,
+//                                            newData -> {
+//                                                result.removeSource(dbSource1);
+//                                                onFetchNetSuccess(newData);
+//                                            });
+//                                }
+//                        );
+//                    });
+//                }
+//            } else {
+//                onFetchFailed();
+//                onFetchNetFailed(1, response);
+//            }
+//        });
     }
 
 
@@ -242,7 +292,7 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
                 if (errType == 1) {
                     setZoneValue(Resource.error(newdata.errorMessage, null));
                 } else {
-                    setZoneValue(Resource.bussinessError(newdata.body.getErrmsg(), null));
+                    setZoneValue(Resource.bussinessError(newdata.body == null ? "" : newdata.body.getErrmsg(), null));
                 }
                 break;
             case FIRST_CACHE_THEN_REQUEST:
@@ -292,7 +342,6 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
                 fetchFromdb();
                 break;
         }
-
     }
 
 
@@ -312,9 +361,11 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
     @WorkerThread
     private void saveCallResult(@NonNull ApiResponse<BaseResponse<ResultType>> response) {
         appExecutors.diskIO().execute(() -> {
+            Gson gson = new Gson();
             CacheEntity cacheEntity = new CacheEntity();
             cacheEntity.setKey(cachekey);
             cacheEntity.setData(IOUtils.toByteArray(response));
+            cacheEntity.setGsonData(gson.toJson(response));
             cacheDatabase.cacheEntityDao().insertCache(cacheEntity);
         });
 
@@ -328,6 +379,9 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
         responseMediatorLiveData.addSource(souce, newdata -> {
             responseMediatorLiveData.removeSource(souce);
             if (newdata != null && newdata.getData() != null) {
+//                Gson gson = new Gson();
+//                responseMediatorLiveData.setValue(gson.fromJson(newdata.getGsonData(), new TypeToken<ApiResponse<BaseResponse<Object>>>() {
+//                }.getType()));
                 responseMediatorLiveData.setValue((ApiResponse<BaseResponse<ResultType>>) IOUtils.toObject(newdata.getData()));
             } else {
                 responseMediatorLiveData.setValue(null);
@@ -345,7 +399,5 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
     protected LiveData<ApiResponse<ResultType>> createSpecCall() {
         return null;
     }
-
-    ;
 }
 

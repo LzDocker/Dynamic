@@ -42,7 +42,7 @@ final class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
         String s = value.string();
         Reader reader = new StringReader(s);
         JsonReader jsonReader = gson.newJsonReader(reader);
-
+        Log.e("Core", s);
         try {
             return adapter.read(jsonReader);
         } catch (Exception e) {

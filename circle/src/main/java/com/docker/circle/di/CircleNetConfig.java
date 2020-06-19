@@ -30,7 +30,7 @@ public class CircleNetConfig {
     @CircleRetorfitQuali
     @Provides
     public static Retrofit providerCircleRetorfit(Retrofit.Builder builder, @CircleClinetQuali OkHttpClient client) {
-        return builder.client(client).baseUrl(HttpUrl.parse("http://htj.wgc360.com/")).build();
+        return builder.client(client).baseUrl(HttpUrl.parse("http://tygs.wgc360.com/")).build();
     }
 
     @CircleClinetQuali

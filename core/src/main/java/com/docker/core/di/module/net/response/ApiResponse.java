@@ -31,7 +31,7 @@ import retrofit2.Response;
  *
  * @param <T>
  */
-public class ApiResponse<T> implements Serializable {
+public class ApiResponse<T> implements Serializable  {
 
     public static String TAG = "ApiResponse";
 

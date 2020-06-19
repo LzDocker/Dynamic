@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-
 @Entity
 public class CacheEntity implements Serializable {
 
@@ -19,6 +18,22 @@ public class CacheEntity implements Serializable {
     @ColumnInfo(name = "cachekey")
     private String key;
 
+
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    private byte[] data;
+
+
+    @ColumnInfo(typeAffinity = ColumnInfo.TEXT)
+    private String gsonData;
+
+    public String getGsonData() {
+        return gsonData;
+    }
+
+    public void setGsonData(String gsonData) {
+        this.gsonData = gsonData;
+    }
+
     public byte[] getData() {
         return data;
     }
@@ -27,8 +42,6 @@ public class CacheEntity implements Serializable {
         this.data = data;
     }
 
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    private byte[] data;
 
     public String getKey() {
         return key;
@@ -38,12 +51,5 @@ public class CacheEntity implements Serializable {
         this.key = key;
     }
 
-//    public long getCid() {
-//        return cid;
-//    }
-//
-//    public void setCid(long cid) {
-//        this.cid = cid;
-//    }
 
 }

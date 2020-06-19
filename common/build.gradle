@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'maven'
+
+
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -15,7 +15,7 @@ android {
         multiDexEnabled true
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                arguments += [AROUTER_MODULE_NAME: project.getName()]
             }
         }
         ndk {
@@ -33,14 +33,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
+    buildFeatures{
+        dataBinding = true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    resourcePrefix "commonapi_"
+    resourcePrefix "common_"
 }
 
 
@@ -48,14 +48,23 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation rootProject.ext.dependencies["appcompat"]
 
-    kapt rootProject.ext.dependencies["hilt-android-compiler"]
-    kapt rootProject.ext.dependencies["hilt-compiler"]
-    kapt rootProject.ext.dependencies["lifecycle-compiler"]
-    kapt rootProject.ext.dependencies["arouter-compiler"]
-    kapt rootProject.ext.dependencies["room-compiler"]
-    kapt rootProject.ext.dependencies["glide-compiler"]
+    api rootProject.ext.dependencies["hilt-android"]
+    api rootProject.ext.dependencies["hilt-common"]
+    api rootProject.ext.dependencies["hilt-lifecycle-viewmodel"]
+    api rootProject.ext.dependencies["arouter"]
+    api rootProject.ext.dependencies["glide"]
+
+
+    annotationProcessor rootProject.ext.dependencies["hilt-android-compiler"]
+    annotationProcessor rootProject.ext.dependencies["hilt-compiler"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    annotationProcessor rootProject.ext.dependencies["room-compiler"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
+    annotationProcessor rootProject.ext.dependencies["autoservice"]
 
     api project(":core")
+    api project(":design")
 //    api('com.docker.core:core:1.0.0')
 
 }
@@ -69,8 +78,8 @@ uploadArchives { //新增 ，因为Android Studio gradle 支持maven插件，所
             }
             pom.project {
                 version '1.0.0' //版本名称
-                artifactId 'commonapi'  //和前面网站上填写的一样
-                groupId 'com.docker.commonapi'  //和前面网站上填写的一样
+                artifactId 'common'  //和前面网站上填写的一样
+                groupId 'com.docker.common'  //和前面网站上填写的一样
                 packaging 'aar' //填写aar
                 description 'new version 1.0.0' //更新描述
             }

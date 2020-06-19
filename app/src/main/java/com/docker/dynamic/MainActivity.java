@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.facade.callback.NavCallback;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.docker.circle.CircleIndexActivity;
 import com.docker.core.di.module.cookie.CookieJarImpl;
 import com.docker.core.di.module.net.qualifier.Client;
@@ -52,8 +55,27 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CircleIndexActivity.class);
-                startActivity(intent);
+                ARouter.getInstance().build("/circle/index").navigation(MainActivity.this, new NavCallback() {
+                    @Override
+                    public void onArrival(Postcard postcard) {
+                        Log.d("TAG", "onArrival: ");
+                    }
+
+                    @Override
+                    public void onFound(Postcard postcard) {
+                        super.onFound(postcard);
+                        Log.d("TAG", "onFound: ");
+                    }
+
+                    @Override
+                    public void onLost(Postcard postcard) {
+                        super.onLost(postcard);
+                        Log.d("TAG", "onLost: ");
+                    }
+                });
+
+//                Intent intent = new Intent(MainActivity.this, CircleIndexActivity.class);
+//                startActivity(intent);
             }
         });
     }
