@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <com.docker.design.stateview.EmptyLayout
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bind:onRetryCommand="@{viewmodel.mCommand.retrycommand}"
+        bind:status="@{viewmodel.mEmptycommand}">
+
+        <com.docker.design.refresh.SmartRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            bind:bdcomplete="@={viewmodel.mCompleteCommand}"
+            bind:bdenable="@={viewmodel.bdenable}"
+            bind:bdenablemore="@={viewmodel.bdenablemore}"
+            bind:bdenablenodata="@={viewmodel.bdenablenodata}"
+            bind:onRefreshCommand="@{viewmodel.mCommand.onrefreshCommand}"
+            bind:onloadmoreCommand="@{viewmodel.mCommand.onloadmoreCommand}"
+            bind:srlEnableRefresh="@={viewmodel.bdenablerefresh}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:overScrollMode="never"
+                app:fastScrollEnabled="false"
+                app:itemBinding="@{viewmodel.itemBinding}"
+                app:items="@{viewmodel.mItems}" />
+        </com.docker.design.refresh.SmartRefreshLayout>
+    </com.docker.design.stateview.EmptyLayout>
+
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.docker.common.vm.base.NitCommonListVm" />
+    </data>
+</layout>

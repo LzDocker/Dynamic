@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data></data>
+
+
+    <LinearLayout
+        android:id="@+id/common_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/common_iv_nodata"
+            android:layout_width="120dp"
+            android:layout_height="125dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/icon_emptyv2" />
+
+        <TextView
+            android:id="@+id/common_tv_nodata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="咦～还没有内容呢～"
+            android:textColor="#333" />
+    </LinearLayout>
+
+
+</layout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/magic"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            app:layout_isSticky="true" />
+
+        <com.docker.design.viewpager.NitViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout>
+
+</layout>

@@ -13,13 +13,8 @@ ext {
             // 路由
             "arouter"                    : 'com.alibaba:arouter-api:1.5.0',
             "arouter-compiler"           : 'com.alibaba:arouter-compiler:1.2.2',
-
+            // auto
             "autoservice"                : "com.google.auto.service:auto-service:1.0-rc7",
-
-//            "arouter"                    : 'com.sankuai.waimai.router:router:1.2.0',
-//            "arouter-compiler"           : 'com.sankuai.waimai.router:compiler:1.2.0',
-
-
             //dex
             "multidex"                   : 'androidx.multidex:multidex:2.0.0',
             //refresh
@@ -65,16 +60,23 @@ ext {
             "immersionbar"               : 'com.gyf.immersionbar:immersionbar:3.0.0',
             "immersionbar-fragment"      : 'com.gyf.immersionbar:immersionbar-components:3.0.0',
 
+            "util-code"                  : "com.blankj:utilcodex:1.29.0",
+
             //recycleview binding  https://github.com/evant/binding-collection-adapter
             "bindingcollectionadapter"   : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0',
             "bindingcollectionadapter-rv": 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0',
+
+            "floatview"                  : 'com.github.princekin-f:EasyFloat:1.3.3', //https://github.com/princekin-f/EasyFloat
+            "livebus"                    : "com.jeremyliao:live-event-bus-x:1.6.1", // https://github.com/JeremyLiao/LiveEventBus
+            "consecutiveScroller"        : "com.github.donkingliang:ConsecutiveScroller:2.6.2",//https://github.com/donkingliang/ConsecutiveScroller
+            "magic"                      : 'com.github.hackware1993:MagicIndicator:1.5.0',
 
             ///////////////////////////////////////////
 
 
             //widget
             "richedit"                   : 'jp.wasabeef:richeditor-android:1.2.2',
-            "magic"                      : 'com.github.hackware1993:MagicIndicator:1.5.0',
+
             "shortcut"                   : 'me.leolin:ShortcutBadger:1.1.22@aar',
             "picture"                    : 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3',
             "banner"                     : 'com.youth.banner:banner:1.4.10',
@@ -83,7 +85,6 @@ ext {
             "tablayout-lib"              : 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar',
             "chipslayout"                : 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar',
             "circleimage"                : 'de.hdodenhof:circleimageview:3.0.0',
-            "floatview"                  : 'com.github.princekin-f:EasyFloat:1.3.3', //https://github.com/princekin-f/EasyFloat
 
             //tool
             "pinyin"                     : 'com.github.promeg:tinypinyin:2.0.3',
@@ -93,13 +94,6 @@ ext {
             "zxing-qrcode"               : 'cn.bingoogolapple:bga-qrcode-zxing:1.3.7', // 二维码识别 // https://github.com/bingoogolapple/BGAQRCode-Android#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E
 
             "pickerview"                 : "com.contrarywind:Android-PickerView:4.1.8", //时间选择框",
-
-            "livebus"                    : "com.jeremyliao:live-event-bus-x:1.6.1", // https://github.com/JeremyLiao/LiveEventBus
-
-            "xui"                        : "com.github.xuexiangjys:XUI:1.1.4",
-
-
-//            "ConsecutiveScroller"        : "com.github.donkingliang:ConsecutiveScroller:2.5.1" //https://github.com/donkingliang/ConsecutiveScroller
 
     ]
 }

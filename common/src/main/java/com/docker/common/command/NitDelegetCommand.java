@@ -1,4 +1,7 @@
-package com.docker.common.util.command;
+package com.docker.common.command;
+
+import com.docker.common.ui.base.NitCommonFragment;
+import com.docker.common.vm.base.NitCommonListVm;
 
 /*
  *
@@ -22,6 +25,6 @@ public interface NitDelegetCommand {
     /*
      * 初始化完成 所有的vm 后给外部调用
      * */
-//    void next(NitCommonListVm commonListVm, NitCommonFragment nitCommonFragment);
+    void next(NitCommonListVm commonListVm, NitCommonFragment nitCommonFragment);
 
 }

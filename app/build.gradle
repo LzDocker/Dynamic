@@ -38,7 +38,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    resourcePrefix "app_"
+//    resourcePrefix "app_"
 }
 
 dependencies {
@@ -48,6 +48,8 @@ dependencies {
     api rootProject.ext.dependencies["hilt-android"]
     api rootProject.ext.dependencies["hilt-common"]
     api rootProject.ext.dependencies["hilt-lifecycle-viewmodel"]
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
 
     annotationProcessor rootProject.ext.dependencies["hilt-android-compiler"]

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <com.docker.design.refresh.SmartRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bind:bdcomplete="@={viewmodel.mCompleteCommand}"
+        bind:bdenable="@={viewmodel.bdenable}"
+        bind:bdenablemore="@={viewmodel.bdenablemore}"
+        bind:bdenablenodata="@={viewmodel.bdenablenodata}"
+        bind:onRefreshCommand="@{viewmodel.mCommand.onrefreshCommand}"
+        bind:onloadmoreCommand="@{viewmodel.mCommand.onloadmoreCommand}"
+        bind:srlEnableRefresh="@={viewmodel.bdenablerefresh}">
+
+        <!--        <com.docker.common.common.widget.fullscroll.ConsecutiveScrollerLayout-->
+        <!--            android:id="@+id/fullscroll"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent">-->
+
+        <!--        </com.docker.common.common.widget.fullscroll.ConsecutiveScrollerLayout>-->
+
+        <com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout
+            android:id="@+id/fullscroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout>
+    </com.docker.design.refresh.SmartRefreshLayout>
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.docker.common.vm.base.NitCommonListVm" />
+    </data>
+
+</layout>

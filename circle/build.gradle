@@ -57,8 +57,6 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
     annotationProcessor rootProject.ext.dependencies["autoservice"]
 
-
-
     api project(":commonapi")
 //    api project(":core")
 }

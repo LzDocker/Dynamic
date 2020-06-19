@@ -14,6 +14,8 @@ public class DynamicApp extends BaseAppliction {
         ARouter.openLog();     // Print log
         ARouter.openDebug();
         ARouter.init(this);
+
+
     }
 
 

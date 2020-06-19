@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:itemBinding="@{viewmodel.itemBinding}"
+            app:items="@{viewmodel.mItems}" />
+
+    </com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout>
+
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.docker.common.vm.base.NitCommonListVm" />
+    </data>
+
+</layout>

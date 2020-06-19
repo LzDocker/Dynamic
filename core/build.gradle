@@ -51,6 +51,8 @@ dependencies {
     api rootProject.ext.dependencies["lifecycle-runtime"]
     api rootProject.ext.dependencies["lifecycle-extensions"]
     api rootProject.ext.dependencies["autoservice"]
+    api rootProject.ext.dependencies["immersionbar"]
+    api rootProject.ext.dependencies["immersionbar-fragment"]
 
     api rootProject.ext.dependencies["hilt-android"]
     api rootProject.ext.dependencies["hilt-common"]

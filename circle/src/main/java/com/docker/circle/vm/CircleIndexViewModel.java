@@ -32,6 +32,7 @@ public class CircleIndexViewModel extends BaseViewModel {
         this.circleService = circleService;
         this.commonRepository = commonRepository;
         this.cardFactory = cardFactory;
+
     }
 
     public final MediatorLiveData<String> liveData = new MediatorLiveData<>();

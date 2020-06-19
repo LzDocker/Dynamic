@@ -1,19 +1,17 @@
 package com.docker.dynamic;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.alibaba.android.arouter.facade.Postcard;
-import com.alibaba.android.arouter.facade.callback.NavCallback;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.docker.circle.CircleIndexActivity;
-import com.docker.core.di.module.cookie.CookieJarImpl;
-import com.docker.core.di.module.net.qualifier.Client;
+import com.docker.common.ui.base.NitCommonActivity;
+import com.docker.core.base.BaseActivity;
 import com.docker.core.di.test.AnalyticsService;
+import com.docker.dynamic.databinding.ActivityMainBinding;
+import com.docker.dynamic.vm.MainViewModel;
 
 import javax.inject.Inject;
 
@@ -23,7 +21,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
 @AndroidEntryPoint
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends NitCommonActivity<MainViewModel, ActivityMainBinding> {
 
 
     @Inject
@@ -36,18 +34,27 @@ public class MainActivity extends AppCompatActivity {
     Retrofit retrofit;
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public MainViewModel getmViewModel() {
+        return new ViewModelProvider(this).get(MainViewModel.class);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         retrofit = retrofit.newBuilder().baseUrl(HttpUrl.parse("http://www.test.com")).build();
         Log.d("TAG", "onCreate:====== " + okHttpClient);
         Log.d("TAG", "onCreate:====3333== " + retrofit.hashCode());
         Log.d("TAG", "onCreate:====4444== " + retrofit.baseUrl());
-        Log.d("TAG", "onCreate:====555== " +  retrofit.callAdapterFactories().size());
+        Log.d("TAG", "onCreate:====555== " + retrofit.callAdapterFactories().size());
 
         for (int i = 0; i < retrofit.callAdapterFactories().size(); i++) {
-            Log.d("TAG", "onCreate: ==="+retrofit.callAdapterFactories().get(i).toString());
+            Log.d("TAG", "onCreate: ===" + retrofit.callAdapterFactories().get(i).toString());
         }
 
         analyticsService.analyticsMethods();
@@ -55,7 +62,11 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/circle/index").navigation(MainActivity.this, new NavCallback() {
+//                ARouter.getInstance().build("/ACCOUNT/index").navigation();
+                ARouter.getInstance().build("/CIRCLE/index").navigation();
+//                ARouter.getInstance().build(RouterManager.getInstance().getMemoryRouterPath("CIRCLE_INDEX")).navigation();
+
+        /*        ARouter.getInstance().build("/circle/index").navigation(MainActivity.this, new NavCallback() {
                     @Override
                     public void onArrival(Postcard postcard) {
                         Log.d("TAG", "onArrival: ");
@@ -72,11 +83,21 @@ public class MainActivity extends AppCompatActivity {
                         super.onLost(postcard);
                         Log.d("TAG", "onLost: ");
                     }
-                });
+                });*/
 
 //                Intent intent = new Intent(MainActivity.this, CircleIndexActivity.class);
 //                startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void initView() {
+
+    }
+
+    @Override
+    public void initObserver() {
+
     }
 }

@@ -1,6 +1,5 @@
 package com.docker.core.base;
 
-
 import android.app.Application;
 import android.content.res.Resources;
 import android.util.Log;
@@ -29,7 +28,6 @@ public abstract class BaseAppliction extends Application {
         super.onCreate();
         init();
     }
-
 
     private void init() {
         instance = this;

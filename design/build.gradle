@@ -32,7 +32,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
     }
     compileOptions {
@@ -52,10 +52,13 @@ dependencies {
     implementation rootProject.ext.dependencies["glide"]
 
     api rootProject.ext.dependencies["constraint-layout"]
-    api rootProject.ext.dependencies["xui"]
     api rootProject.ext.dependencies["hilt-android"]
     api rootProject.ext.dependencies["hilt-common"]
     api rootProject.ext.dependencies["hilt-lifecycle-viewmodel"]
+    api rootProject.ext.dependencies["floatview"]
+    api rootProject.ext.dependencies["refresh"]
+    api rootProject.ext.dependencies["consecutiveScroller"]
+    api rootProject.ext.dependencies["magic"]
 
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     annotationProcessor rootProject.ext.dependencies["hilt-android-compiler"]

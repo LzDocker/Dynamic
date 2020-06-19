@@ -7,13 +7,18 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.docker.circle.api.CircleService;
 import com.docker.circle.databinding.ActivityCircleIndexBinding;
 import com.docker.circle.di.CircleClinetQuali;
 import com.docker.circle.di.CircleRetorfitQuali;
+import com.docker.circle.service.CircleRouterConstantService;
 import com.docker.circle.vm.CircleIndexViewModel;
-import com.docker.commonapi.card.CardFactory;
+import com.docker.commonapi.api.CommonService;
+import com.docker.commonapi.router.RouterManager;
+import com.docker.commonapi.router.RouterParam;
 import com.docker.core.base.BaseActivity;
+import com.docker.core.command.ReplyCommandParam;
 import com.docker.core.di.module.net.repository.CommonRepository;
 
 import javax.inject.Inject;
@@ -22,7 +27,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
-@Route(path = "/circle/index")
+@Route(path = CircleRouterConstantService.CIRCLE_INDEX)
 @AndroidEntryPoint
 public class CircleIndexActivity extends BaseActivity<CircleIndexViewModel, ActivityCircleIndexBinding> {
 
@@ -43,8 +48,11 @@ public class CircleIndexActivity extends BaseActivity<CircleIndexViewModel, Acti
     @Inject
     CircleService circleService;
 
+    @Inject
+    RouterManager routerManager;
 
-
+    @Inject
+    CommonService commonService;
 
     @Override
     protected int getLayoutId() {
@@ -90,11 +98,15 @@ public class CircleIndexActivity extends BaseActivity<CircleIndexViewModel, Acti
         findViewById(R.id.tv_click).setOnClickListener(v -> {
 //            mViewModel.fetchDynamicList();
 //            cardFactory.getCardList();
-            mViewModel.test();
+//            mViewModel.test();
+
+//            ARouter.getInstance().build(RouterManager.getInstance().getMemoryRouterPath("ACCOUNT_INDEX")).navigation();
+
+            routerManager.Jump(new RouterParam.RouterBuilder("ACCOUNT_INDEX").create());
+
+//            routerManager.initService(commonService).initRouterData(CircleIndexActivity.this, (ReplyCommandParam) o -> Log.d("TAG", "exectue: =======初始化路由==============="));
         });
     }
-
-
 
 
 }

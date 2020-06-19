@@ -3,7 +3,6 @@ apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'maven'
 
 
-
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -33,7 +32,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
     }
     compileOptions {
@@ -53,6 +52,11 @@ dependencies {
     api rootProject.ext.dependencies["hilt-lifecycle-viewmodel"]
     api rootProject.ext.dependencies["arouter"]
     api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["util-code"]
+    api rootProject.ext.dependencies["bindingcollectionadapter"]
+    api rootProject.ext.dependencies["bindingcollectionadapter-rv"]
+    api rootProject.ext.dependencies["livebus"]
+    api rootProject.ext.dependencies["livebus"]
 
 
     annotationProcessor rootProject.ext.dependencies["hilt-android-compiler"]

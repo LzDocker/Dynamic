@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="message"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_progress_custom"
+            android:gravity="center"
+            android:minWidth="90dp"
+            android:minHeight="40dp"
+            android:orientation="vertical"
+            android:paddingLeft="14dp"
+            android:paddingTop="20dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="10dp">
+
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerHorizontal="true"
+                android:indeterminateBehavior="repeat"
+                android:indeterminateDrawable="@drawable/list_spinner"
+                android:indeterminateOnly="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progress_bar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:text="@{message}"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

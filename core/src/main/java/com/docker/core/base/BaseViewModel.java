@@ -5,7 +5,7 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
 
-public class BaseViewModel extends ViewModel implements LifecycleObserver {
+public abstract class BaseViewModel extends ViewModel implements LifecycleObserver {
 
     public BaseViewModel() {
 

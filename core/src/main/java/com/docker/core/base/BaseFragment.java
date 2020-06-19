@@ -12,8 +12,9 @@ import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
 import com.docker.core.utils.AutoClearedValue;
+import com.gyf.immersionbar.components.ImmersionFragment;
 
-public abstract class BaseFragment<VM extends BaseViewModel, VB extends ViewDataBinding> extends Fragment {
+public abstract class BaseFragment<VM extends BaseViewModel, VB extends ViewDataBinding> extends ImmersionFragment {
 
     public AutoClearedValue<VB> mBinding;
     public VM mViewModel;
