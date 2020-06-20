@@ -1,4 +1,5 @@
 package com.docker.account.ui;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,6 +16,7 @@ import com.docker.commonapi.router.RouterManager;
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
+
 @Route(path = AccountRouterConstantService.ACCOUNT_INDEX)
 @AndroidEntryPoint
 public class AccountIndexActivity extends AppCompatActivity {
@@ -29,5 +31,8 @@ public class AccountIndexActivity extends AppCompatActivity {
         });
 
         model.liveData.observe(this, s -> Log.d("TAG", "onChanged: =================="));
+
+//        testaccount tt = new testaccount();
+//        tt.tedt();
     }
 }

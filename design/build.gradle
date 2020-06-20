@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'maven'
 
-
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -64,6 +63,10 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["hilt-android-compiler"]
     annotationProcessor rootProject.ext.dependencies["hilt-compiler"]
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
+
+//    if (IsBuildMudle) {
+//        api project(":commonapi")
+//    }
 
 }
 

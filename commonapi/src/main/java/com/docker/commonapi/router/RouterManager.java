@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.LifecycleOwner;
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.ToastUtils;
 import com.docker.common.util.ParamUtils;
 import com.docker.commonapi.api.CommonService;
 import com.docker.commonapi.cache.DbCacheUtils;
@@ -208,14 +209,14 @@ public class RouterManager {
                 if (routerMap.containsKey(routerParam.key)) {
                     processJump(routerParam);
                 } else {
-//                    ToastUtils.showShort("功能暂未开放，敬请期待...");
+                    ToastUtils.showShort("功能暂未开放，敬请期待...");
                 }
             }, true);
         } else {
             if (routerMap.containsKey(routerParam.key)) {
                 processJump(routerParam);
             } else {
-//                ToastUtils.showShort("功能暂未开放，敬请期待...");
+                ToastUtils.showShort("功能暂未开放，敬请期待...");
             }
         }
     }

@@ -13,8 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-
+        
         <activity
             android:name=".ui.SplashActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"

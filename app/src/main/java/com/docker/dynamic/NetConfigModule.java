@@ -29,32 +29,5 @@ public class NetConfigModule {
         return HttpUrl.parse("http://www.nit.com/");
     }
 
-    @Provides
-    public HttpRequestHandler providerHttpRequestHandler() {
-        return new HttpRequestHandler() {
-            @Override
-            public Response onHttpResultResponse(String httpResult, Interceptor.Chain chain, Response response) {
-                return response;
-            }
 
-            @Override
-            public Request onHttpRequestBefore(Interceptor.Chain chain, Request request) {
-                Log.d("TAG", "onHttpRequestBefore: ====app======");
-                return request;
-            }
-        };
-    }
-
-    @Provides
-    public List<Interceptor> providerInterceptors() {
-        List<Interceptor> interceptors = new ArrayList<>();
-
-        return interceptors;
-    }
-    
-    @Provides
-    public List<Converter.Factory> providerConvers() {
-        List<Converter.Factory> mConverters = new ArrayList<>();
-        return mConverters;
-    }
 }
