@@ -3,9 +3,13 @@ package com.docker.commonapi.router;
 import android.app.Activity;
 import android.text.TextUtils;
 import android.util.Log;
+
 import androidx.lifecycle.LifecycleOwner;
+
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.GsonUtils;
+import com.blankj.utilcode.util.ReflectUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.docker.common.util.ParamUtils;
 import com.docker.commonapi.api.CommonService;
@@ -21,18 +25,26 @@ import com.docker.core.di.module.cache.CacheEntity;
 import com.docker.core.utils.AppExecutors;
 import com.docker.core.utils.IOUtils;
 import com.google.gson.internal.LinkedTreeMap;
+
+import org.checkerframework.checker.units.qual.A;
+
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
+import java.util.Stack;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import static com.docker.common.config.Constant.ParamDefTrans;
+
 @Singleton
 public class RouterManager {
-
 
     CommonService commonService;
 
@@ -42,10 +54,11 @@ public class RouterManager {
 
     CacheDatabase cacheDatabase;
 
+    public Stack<RouterCommand> mProcessStack = new Stack<>();
 
-    String mtime;
+    public String mtime;
 
-//    private volatile static RouterManager mRouterManager = null;
+    private volatile static RouterManager mRouterManager = null;
 
     private Map<String, String> memoryRouterMap = new LinkedTreeMap();
 
@@ -58,27 +71,65 @@ public class RouterManager {
         this.appExecutors = appExecutors;
         this.cacheDatabase = cacheDatabase;
         this.dbCacheUtils = dbCacheUtils;
-
+        mRouterManager = this;
     }
 
-    public RouterManager initService(CommonService commonService) {
+    public RouterManager bindService(CommonService commonService) {
         this.commonService = commonService;
         return this;
     }
 
-//    public RouterManager() {
-//    }
-//
-//    public static RouterManager getInstance() {
-//        if (mRouterManager == null) {
-//            synchronized (RouterManager.class) {
-//                if (mRouterManager == null) {
-//                    mRouterManager = new RouterManager();
-//                }
-//            }
-//        }
-//        return mRouterManager;
-//    }
+    public RouterManager() {
+
+    }
+
+    public static RouterManager getInstance() {
+        if (mRouterManager == null) {
+            synchronized (RouterManager.class) {
+                if (mRouterManager == null) {
+                    mRouterManager = new RouterManager();
+                }
+            }
+        }
+        return mRouterManager;
+    }
+
+    /*
+     * 处理任务
+     * */
+    public void processRouterTask(String taskName, HashMap<String, String> providerKeyMap, HashMap<String, Object> providerObjMap) {
+        if (mProcessStack.peek().commandkey.equals(taskName)) {
+            ResultParam resultParam = (ResultParam) mProcessStack.pop().reponseReplayCommand.exectue(providerKeyMap, providerObjMap);
+            if (resultParam == null || resultParam.TransPortPramMap == null) {
+                return;
+            }
+            for (Map.Entry<String, String> entry : resultParam.TransPortPramMap.entrySet()) {
+                if (providerKeyMap.get(entry.getValue()) != null) {
+                    resultParam.TransPortPramMap.put(entry.getKey(), providerKeyMap.get(entry.getValue()));
+                } else {
+                    Log.d("TAG", "processRouterTask: ================" + entry.getValue());
+                    if (entry.getValue().contains("_")) {
+                        String[] pararr = entry.getValue().split("_");
+                        for (Map.Entry<String, Object> objentry : providerObjMap.entrySet()) {
+                            if (pararr[0].equals(objentry.getKey())) {
+                                if ("*".equals(pararr[1]) || TextUtils.isEmpty(pararr[1])) {
+                                    resultParam.TransPortPramMap.put(entry.getKey(), providerKeyMap.get(GsonUtils.toJson(objentry.getValue())));
+                                } else {
+                                    Object o = providerObjMap.get(pararr[0]);
+                                    resultParam.TransPortPramMap.put(entry.getKey(), ReflectUtils.reflect(o).field(pararr[1]).get());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            ParamSample paramSample = new ParamSample();
+            paramSample.mGotMap = resultParam.TransPortPramMap;
+            if (resultParam.TargetVm != null && resultParam.TargerMethod != null && paramSample.mGotMap.size() != 0) {
+                ReflectUtils.reflect(resultParam.TargetVm).method(resultParam.TargerMethod, paramSample).get();
+            }
+        }
+    }
 
 
     /*
@@ -225,10 +276,35 @@ public class RouterManager {
     private void processJump(RouterParam routerParam) {
         Router routerEntry = routerMap.get(routerParam.key);
         Object param = routerParam.param;
+        String defaultParam = routerParam.from + "@nit@" + routerParam.key;
         boolean isPush = routerParam.ispush;
         boolean isfromH5 = routerParam.isFormH5;
         Activity content = routerParam.context;
         int code = routerParam.code;
+        if (routerParam.mRouterCommand != null) {
+            if (mProcessStack.search(routerParam.mRouterCommand) == -1) {
+                Log.d("TAG", "processJump: ======unfind=======" + mProcessStack.size());
+                mProcessStack.push(routerParam.mRouterCommand);
+            } else {
+                if (mProcessStack.peek().equals(routerParam.mRouterCommand)) {
+                    Log.d("TAG", "processJump: ======find==栈顶复用=====" + mProcessStack.search(routerParam.mRouterCommand));
+                } else {
+                    // 能走到这里一般情况下都是有问题的吧  todo
+                    Log.d("TAG", "processJump: =========提升至栈顶======栈内清空重复数据==========");
+                    List<RouterCommand> oldCommsnds = new ArrayList<>();
+                    for (RouterCommand routerCommand : mProcessStack) {
+                        if (routerCommand.equals(routerParam.mRouterCommand)) {
+                            oldCommsnds.add(routerCommand);
+                        }
+                    }
+                    if (oldCommsnds.size() != 0) {
+                        mProcessStack.removeAll(oldCommsnds);
+                        mProcessStack.push(routerParam.mRouterCommand);
+                    }
+                    Log.d("TAG", "processJump: ======find=======" + mProcessStack.search(routerParam.mRouterCommand));
+                }
+            }
+        }
         Postcard postcard;
         if (isPush) {
             if (param != null) {
@@ -267,9 +343,9 @@ public class RouterManager {
                     postcard = ARouter.getInstance().build(routerEntry.androidRoute);
                 }
                 if (content != null && code > 0) {
-                    postcard.navigation(content, code);
+                    postcard.withString(ParamDefTrans, defaultParam).navigation(content, code);
                 } else {
-                    postcard.navigation();
+                    postcard.withString(ParamDefTrans, defaultParam).navigation();
                 }
             } else {
                 if (param != null) {
@@ -279,9 +355,9 @@ public class RouterManager {
                     postcard = ARouter.getInstance().build(routerEntry.androidRoute);
                 }
                 if (content != null && code > 0) {
-                    postcard.navigation(content, code);
+                    postcard.withString(ParamDefTrans, defaultParam).navigation(content, code);
                 } else {
-                    postcard.navigation();
+                    postcard.withString(ParamDefTrans, defaultParam).navigation();
                 }
             }
         } else {
@@ -322,4 +398,18 @@ public class RouterManager {
         });
     }
 
+    public String getReturnResult(HashMap<String, Object> objMap, String key, String fildName) {
+        String result = "";
+        if (objMap != null && objMap.size() > 0) {
+            Object o = objMap.get(key);
+            if (o != null) {
+                if (TextUtils.isEmpty(fildName)) {
+                    result = GsonUtils.toJson(ReflectUtils.reflect(o).get());
+                } else {
+                    result = ReflectUtils.reflect(o).field(fildName).get();
+                }
+            }
+        }
+        return result;
+    }
 }

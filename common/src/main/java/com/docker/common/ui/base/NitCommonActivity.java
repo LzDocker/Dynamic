@@ -13,6 +13,7 @@ import com.blankj.utilcode.util.FragmentUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.docker.common.R;
 import com.docker.common.command.NitDelegetCommand;
+import com.docker.common.config.Constant;
 import com.docker.common.event.NitEventMessageManager;
 import com.docker.common.vm.base.NitCommonBaseVm;
 import com.docker.common.vm.base.NitCommonListVm;
@@ -24,15 +25,36 @@ import com.lzf.easyfloat.EasyFloat;
 import com.lzf.easyfloat.enums.SidePattern;
 import com.lzf.easyfloat.interfaces.OnInvokeView;
 
+import java.util.HashMap;
 import java.util.Map;
+
+import javax.inject.Inject;
 
 public abstract class NitCommonActivity<VM extends BaseViewModel, VB extends ViewDataBinding> extends BaseActivity<VM, VB> {
 
     private DialogWait dialogWait;
 
+    /*
+     * 页面默认参数
+     * */
+    public String mDefaultParam;
+
+    public String mRouterName;
+
+    /*
+     * 页面能够提供的KEY
+     * */
+    public HashMap<String, String> mPageProviderKeys = new HashMap<>();
+    /*
+    *
+    * */
+    public HashMap<String, Object> mPageProviderObjs = new HashMap<>();
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mDefaultParam = getIntent().getStringExtra(Constant.ParamDefTrans);
         initView();
         initObserver();
         for (int i = 0; i < NitEventMessageManager.getInstance().mEvents.size(); i++) {
@@ -114,4 +136,12 @@ public abstract class NitCommonActivity<VM extends BaseViewModel, VB extends Vie
                 .setAnimator(null)
                 .show();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
+
 }

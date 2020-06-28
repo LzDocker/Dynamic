@@ -21,6 +21,11 @@ android {
             //选择要添加的对应cpu类型的.so库。
             abiFilters 'armeabi-v7a', 'x86', 'x86_64', 'arm64-v8a'
         }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: rootProject.ext.android.applicationId,
+                JPUSH_APPKEY : rootProject.ext.push.JPUSH_APPKEY,
+                JPUSH_CHANNEL: rootProject.ext.push.JPUSH_CHANNEL
+        ]
     }
     dexOptions {
         javaMaxHeapSize "4g"
@@ -48,7 +53,7 @@ dependencies {
     implementation rootProject.ext.dependencies["appcompat"]
 
     api rootProject.ext.dependencies["hilt-android"]
-    api rootProject.ext.dependencies["hilt-common"]
+//    api rootProject.ext.dependencies["hilt-common"]
     api rootProject.ext.dependencies["hilt-lifecycle-viewmodel"]
     api rootProject.ext.dependencies["arouter"]
     api rootProject.ext.dependencies["glide"]
@@ -56,7 +61,8 @@ dependencies {
     api rootProject.ext.dependencies["bindingcollectionadapter"]
     api rootProject.ext.dependencies["bindingcollectionadapter-rv"]
     api rootProject.ext.dependencies["livebus"]
-    api rootProject.ext.dependencies["livebus"]
+    api rootProject.ext.dependencies["rxpermissions"]
+    api rootProject.ext.dependencies["rxjava"]
 
 
     annotationProcessor rootProject.ext.dependencies["hilt-android-compiler"]

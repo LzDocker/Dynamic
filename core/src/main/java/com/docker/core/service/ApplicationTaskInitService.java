@@ -1,5 +1,6 @@
 package com.docker.core.service;
 
+import android.app.Application;
 import android.util.Log;
 
 import com.docker.core.command.ReplyCommand;
@@ -9,11 +10,14 @@ import com.docker.core.command.ReplyCommand;
  * */
 public interface ApplicationTaskInitService {
 
+
     /*
      * 初始化等级 越小越先初始化
      * */
     public int getInitLevel();
 
+
+    public void dispatcherApplication(Application application);
 
     /*
      * 开始初始化

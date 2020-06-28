@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/design_liner_bg_shape"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp"
+        android:paddingRight="22dp"
+        tools:ignore="MissingDefaultResource,ResourceName">
+
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="#333"
+            android:textSize="16sp"
+            tools:text="张三" />
+
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="14dp"
+            android:gravity="center"
+            android:textColor="#333" />
+
+    </LinearLayout>
+
+    <data>
+
+    </data>
+</layout>

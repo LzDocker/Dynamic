@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    bind:ignore="MissingDefaultResource,ResourceName">
+
+    <com.docker.design.stateview.EmptyLayout
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/design_white"
+        android:gravity="center">
+
+
+        <com.docker.country.widget.recycleIndex.IndexableLayout
+            android:id="@+id/indexableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            app:indexBar_selectedTextColor="#f33737"
+            app:indexBar_textColor="@android:color/black"
+            app:indexBar_textSize="14sp"
+            app:indexBar_textSpace="4dp" />
+
+
+    </com.docker.design.stateview.EmptyLayout>
+
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.docker.country.vm.CountrySelectViewModel" />
+
+    </data>
+
+
+</layout>
+
+

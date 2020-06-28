@@ -27,12 +27,10 @@ public abstract class NitBoundCallback<T> {
     }
 
     public void onBusinessError(Resource<T> resource) {
-        if (resource.message != null) {
+//        if (resource.message != null) {
 //            ToastUtils.showShort(resource.message);
-        }
+//        }
     }
-
-    ;
 
     public void onNetworkError(Resource<T> resource) {
 //        if (resource.message != null) {
@@ -42,17 +40,12 @@ public abstract class NitBoundCallback<T> {
 //        }
     }
 
-    ;
-
     public void onLoading() {
 
     }
 
-    ;
-
     public void onLoading(Call call) {
-    }
 
-    ;
+    }
 
 }

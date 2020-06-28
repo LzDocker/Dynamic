@@ -1,6 +1,5 @@
 package com.docker.core.base;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
-import androidx.fragment.app.Fragment;
 
 import com.docker.core.utils.AutoClearedValue;
 import com.gyf.immersionbar.components.ImmersionFragment;
@@ -37,8 +35,8 @@ public abstract class BaseFragment<VM extends BaseViewModel, VB extends ViewData
     }
 
     @Override
-    public void onAttach(Context activity) {
-        super.onAttach(activity);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         this.mViewModel = this.getViewModel();
         if (this.mViewModel != null) {
             this.getLifecycle().addObserver(this.mViewModel);

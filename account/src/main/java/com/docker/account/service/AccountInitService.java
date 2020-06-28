@@ -1,5 +1,6 @@
 package com.docker.account.service;
 
+import android.app.Application;
 import android.util.Log;
 
 import com.docker.core.command.ReplyCommand;
@@ -12,6 +13,12 @@ public class AccountInitService implements ApplicationTaskInitService {
     @Override
     public int getInitLevel() {
         return 0;
+    }
+
+
+    @Override
+    public void dispatcherApplication(Application application) {
+
     }
 
     @Override

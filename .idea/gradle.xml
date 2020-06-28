@@ -12,12 +12,17 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/account" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/baidumap" />
             <option value="$PROJECT_DIR$/circle" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/commonapi" />
+            <option value="$PROJECT_DIR$/component_country" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/design" />
             <option value="$PROJECT_DIR$/message" />
+            <option value="$PROJECT_DIR$/pay" />
+            <option value="$PROJECT_DIR$/push" />
+            <option value="$PROJECT_DIR$/umeng" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

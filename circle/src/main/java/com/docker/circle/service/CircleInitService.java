@@ -1,5 +1,6 @@
 package com.docker.circle.service;
 
+import android.app.Application;
 import android.util.Log;
 
 import com.docker.core.command.ReplyCommand;
@@ -12,6 +13,11 @@ public class CircleInitService implements ApplicationTaskInitService {
     @Override
     public int getInitLevel() {
         return 1;
+    }
+
+    @Override
+    public void dispatcherApplication(Application application) {
+
     }
 
     @Override

@@ -38,6 +38,7 @@ public abstract class BaseAppliction extends Application {
         }
         Collections.sort(tasklist, (o1, o2) -> o1.getInitLevel() - o2.getInitLevel());
         for (int i = 0; i < tasklist.size(); i++) {
+            tasklist.get(i).dispatcherApplication(this);
             tasklist.get(i).Start();
             tasklist.get(i).GetReplyCommand().exectue();
         }

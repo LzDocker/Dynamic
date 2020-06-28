@@ -7,7 +7,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.docker.circle.api.CircleService;
 import com.docker.circle.databinding.ActivityCircleIndexBinding;
 import com.docker.circle.di.CircleClinetQuali;
@@ -18,7 +17,6 @@ import com.docker.commonapi.api.CommonService;
 import com.docker.commonapi.router.RouterManager;
 import com.docker.commonapi.router.RouterParam;
 import com.docker.core.base.BaseActivity;
-import com.docker.core.command.ReplyCommandParam;
 import com.docker.core.di.module.net.repository.CommonRepository;
 
 import javax.inject.Inject;

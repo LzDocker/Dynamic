@@ -18,6 +18,11 @@ android {
                 arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: rootProject.ext.android.applicationId,
+                JPUSH_APPKEY : rootProject.ext.push.JPUSH_APPKEY,
+                JPUSH_CHANNEL: rootProject.ext.push.JPUSH_CHANNEL
+        ]
     }
     sourceSets {
         main {
@@ -55,7 +60,7 @@ dependencies {
     api rootProject.ext.dependencies["immersionbar-fragment"]
 
     api rootProject.ext.dependencies["hilt-android"]
-    api rootProject.ext.dependencies["hilt-common"]
+//    api rootProject.ext.dependencies["hilt-common"]
     api rootProject.ext.dependencies["hilt-lifecycle-viewmodel"]
 
     annotationProcessor rootProject.ext.dependencies["hilt-android-compiler"]

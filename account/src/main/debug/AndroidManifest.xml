@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.docker.account">
-
 
     <application
         android:name=".AccountApp"
@@ -12,14 +12,22 @@
         android:resizeableActivity="true"
         android:supportsRtl="true"
         android:theme="@style/account_AppTheme"
-        android:usesCleartextTraffic="true">
-
+        android:usesCleartextTraffic="true"
+        tools:replace="android:label,android:name,android:theme">
+        <activity android:name=".ui.RegistActivity"></activity>
+        <activity android:name=".ui.ResetPwdActivity" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:label="登录" />
         <activity android:name=".ui.AccountIndexActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

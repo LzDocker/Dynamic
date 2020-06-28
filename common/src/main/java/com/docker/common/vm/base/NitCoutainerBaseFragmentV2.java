@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -42,7 +43,7 @@ public class NitCoutainerBaseFragmentV2 extends NitCommonFragment<NitcommonCardV
 
     @Override
     protected NitcommonCardViewModel getViewModel() {
-        return ViewModelProviders.of(this, factory).get(NitcommonCardViewModel.class);
+        return new ViewModelProvider(this).get(NitcommonCardViewModel.class);
     }
 
     @Override

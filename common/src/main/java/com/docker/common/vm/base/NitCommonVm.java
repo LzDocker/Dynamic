@@ -11,7 +11,7 @@ import com.docker.core.di.module.net.response.BaseResponse;
 
 public abstract class NitCommonVm<T> extends NitCommonBaseVm {
 
-    CommonRepository commonRepository;
+    protected CommonRepository commonRepository;
 
     public NitCommonVm(CommonRepository commonRepository) {
         this.commonRepository = commonRepository;

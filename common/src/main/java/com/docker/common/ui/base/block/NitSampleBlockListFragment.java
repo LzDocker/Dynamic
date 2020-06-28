@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -32,7 +33,7 @@ public class NitSampleBlockListFragment extends NitBaseBlockListFragment<NitComm
 
     @Override
     protected NitCommonContainerViewModel getViewModel() {
-        return ViewModelProviders.of(this, factory).get(NitCommonContainerViewModel.class);
+        return new ViewModelProvider(this).get(NitCommonContainerViewModel.class);
     }
 
     @Override
@@ -61,15 +62,15 @@ public class NitSampleBlockListFragment extends NitBaseBlockListFragment<NitComm
             Class clazz = null;
             try {
                 clazz = Class.forName(commonListReq.mBlockVmPath);
-                mViewModel = (NitCommonContainerViewModel) ViewModelProviders.of(this, factory).get(clazz);
+                mViewModel = (NitCommonContainerViewModel) new ViewModelProvider(this).get(clazz);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
         } else {
             if (commonListReq.mBlockVm != null) {
-                mViewModel = (NitCommonContainerViewModel) ViewModelProviders.of(this, factory).get(commonListReq.mBlockVm);
+                mViewModel = (NitCommonContainerViewModel) new ViewModelProvider(this).get(commonListReq.mBlockVm);
             } else {
-                mViewModel = (NitCommonContainerViewModel) ViewModelProviders.of(this, factory).get(delegetCommand.providerOuterVm());
+                mViewModel = (NitCommonContainerViewModel) new ViewModelProvider(this).get(delegetCommand.providerOuterVm());
             }
         }
         this.getLifecycle().addObserver(mViewModel);

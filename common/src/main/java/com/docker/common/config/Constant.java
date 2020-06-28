@@ -6,6 +6,7 @@ public class Constant {
     public static final String CommonListParam = "CommonListParam";
 
     public final static String ParamTrans = "ParamTrans";
+    public final static String ParamDefTrans = "DefParamTrans";
 
     public final static String COMMONH5 = "/COMMON/h5";
     public final static String COMMON_SAMPLE_BLOCK_ITEM_LIST = "/COMMON/BLOCK_ITEM_LIST";

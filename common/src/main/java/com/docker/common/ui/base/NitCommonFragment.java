@@ -22,8 +22,6 @@ import javax.inject.Inject;
 
 public abstract class NitCommonFragment<VM extends BaseViewModel, VB extends ViewDataBinding> extends BaseFragment<VM, VB> {
     public DialogWait dialogWait;
-    @Inject
-    public ViewModelProvider.Factory factory;
 
     public void onLoadMore(SmartRefreshLayout refreshLayout) {
     }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/design_white"
+        android:gravity="center"
+        android:paddingLeft="14dp"
+        android:paddingTop="4dp"
+        android:paddingRight="14dp"
+        android:paddingBottom="4dp"
+        android:textColor="#333"
+        android:textSize="16sp"
+        tools:ignore="ResourceName"
+        tools:text="张三" />
+
+    <data>
+
+    </data>
+</layout>
+

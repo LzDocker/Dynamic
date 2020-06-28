@@ -1,23 +1,13 @@
 package com.docker.account.di;
 
-import android.util.Log;
-
 import com.docker.account.api.AccountService;
-import com.docker.core.utils.HttpRequestHandler;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ActivityComponent;
 import okhttp3.HttpUrl;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import retrofit2.Converter;
 import retrofit2.Retrofit;
 
 @Module

@@ -2,6 +2,9 @@ package com.docker.commonapi.router;
 
 import android.app.Activity;
 
+import com.docker.design.recycledrg.ReponseReplayCommand;
+import com.docker.design.recycledrg.ReponseReplayCommandV2;
+
 public class RouterParam {
 
 
@@ -13,6 +16,8 @@ public class RouterParam {
      * ispush 是否推送跳转 必传参数
      *
      * content code 非必须参数   传入则是 forResult 的跳转
+     *
+     * form  跳转前的标记 一般为跳转前的路由 key
      * */
 
     public String key;
@@ -27,6 +32,10 @@ public class RouterParam {
 
     public int code;
 
+    public String from;
+
+    public RouterCommand mRouterCommand;
+
     public RouterParam(RouterBuilder routerBuilder) {
         this.key = routerBuilder.key;
         this.param = routerBuilder.param;
@@ -34,6 +43,11 @@ public class RouterParam {
         this.context = routerBuilder.context;
         this.code = routerBuilder.code;
         this.isFormH5 = routerBuilder.isFormH5;
+        this.from = routerBuilder.from;
+        RouterCommand routerCommand = new RouterCommand();
+        routerCommand.commandkey = routerBuilder.from + "@nit@" + routerBuilder.key;
+        routerCommand.reponseReplayCommand = routerBuilder.mRosponseCommand;
+        this.mRouterCommand = routerCommand;
     }
 
 
@@ -50,6 +64,10 @@ public class RouterParam {
         private boolean isFormH5 = false;
 
         private int code = 0;
+
+        public String from;
+
+        public ReponseReplayCommandV2 mRosponseCommand;
 
         public RouterBuilder(String key) {
             this.key = key;
@@ -73,6 +91,16 @@ public class RouterParam {
 
         public RouterBuilder withFromH5() {
             this.isFormH5 = true;
+            return this;
+        }
+
+        public RouterBuilder withFrom(String from) {
+            this.from = from;
+            return this;
+        }
+
+        public RouterBuilder withmRosponseCommand(ReponseReplayCommandV2 mRosponseCommand) {
+            this.mRosponseCommand = mRosponseCommand;
             return this;
         }
 
