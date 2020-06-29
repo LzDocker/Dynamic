@@ -26,7 +26,7 @@ android {
         }
         manifestPlaceholders = [
                 JPUSH_PKGNAME: rootProject.ext.android.applicationId,
-                JPUSH_APPKEY: rootProject.ext.push.JPUSH_APPKEY,
+                JPUSH_APPKEY : rootProject.ext.push.JPUSH_APPKEY,
                 JPUSH_CHANNEL: rootProject.ext.push.JPUSH_CHANNEL
         ]
     }

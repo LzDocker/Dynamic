@@ -181,7 +181,6 @@ public class LoginActivity extends NitCommonActivity<AccountViewModel, AccountAc
                 jpushService.setAlias(true);
             }
         });
-
         mViewModel.mThiredLoginLivedata.observe(this, s -> {
             RegistParamTransVo registParamTransVo = new RegistParamTransVo();
             registParamTransVo.wechatInfo = wechatInfo;

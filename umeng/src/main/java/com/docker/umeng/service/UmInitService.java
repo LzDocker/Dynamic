@@ -2,6 +2,7 @@ package com.docker.umeng.service;
 
 import android.app.Application;
 
+import com.docker.core.base.BaseAppliction;
 import com.docker.core.service.ApplicationTaskInitService;
 import com.google.auto.service.AutoService;
 import com.umeng.commonsdk.UMConfigure;
@@ -22,7 +23,7 @@ public class UmInitService implements ApplicationTaskInitService {
     }
 
     @Override
-    public void dispatcherApplication(Application application) {
+    public void dispatcherApplication(BaseAppliction application) {
         UMConfigure.init(application, Umeng
                 , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0
         UMConfigure.setLogEnabled(true);

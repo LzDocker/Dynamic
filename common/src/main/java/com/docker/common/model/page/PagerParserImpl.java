@@ -35,6 +35,7 @@
 //import com.docker.common.vm.base.NitCommonContainerViewModel;
 //import com.docker.common.vm.base.NitCommonListVm;
 //import com.docker.core.utils.AppExecutors;
+//import com.docker.design.indexctor.CommonIndector;
 //import com.docker.design.viewpager.NitViewPager;
 //import com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout;
 //import java.util.ArrayList;

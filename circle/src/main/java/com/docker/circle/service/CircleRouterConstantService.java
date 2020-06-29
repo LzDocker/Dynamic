@@ -10,5 +10,4 @@ public class CircleRouterConstantService implements RouterConstantService {
 
     public static final String CIRCLE_INDEX = Group + "index";
 
-
 }

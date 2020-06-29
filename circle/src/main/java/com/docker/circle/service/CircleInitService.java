@@ -3,6 +3,7 @@ package com.docker.circle.service;
 import android.app.Application;
 import android.util.Log;
 
+import com.docker.core.base.BaseAppliction;
 import com.docker.core.command.ReplyCommand;
 import com.docker.core.service.ApplicationTaskInitService;
 import com.google.auto.service.AutoService;
@@ -16,7 +17,7 @@ public class CircleInitService implements ApplicationTaskInitService {
     }
 
     @Override
-    public void dispatcherApplication(Application application) {
+    public void dispatcherApplication(BaseAppliction application) {
 
     }
 

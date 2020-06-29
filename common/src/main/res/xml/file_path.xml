@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+    <paths>
+        <external-path
+            name="camera_photos"
+            path="" />
+        <external-path
+            name="external_storage_root"
+            path="." />
+        <external-path
+            name="files_root"
+            path="Android/data/." />
+        <root-path
+            name="root-path"
+            path="" />
+        <external-path
+            name="apk"
+            path="." />
+    </paths>
+</resources>

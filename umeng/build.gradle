@@ -1,6 +1,7 @@
 println IsBuildMudle
 apply plugin: 'com.android.library'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -56,10 +57,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api rootProject.ext.dependencies["hilt-android"]
     api rootProject.ext.dependencies["hilt-lifecycle-viewmodel"]
+
+    api(name: "umeng-asms-armeabi-v1.1.3", ext: "aar")
+    api(name: "umeng-crash-armeabi-v0.0.4", ext: "aar")
 
     api files('libs/lenovo-opendeviceid.jar')
     api files('libs/mi-deviceid.jar')
@@ -69,11 +73,10 @@ dependencies {
     api files('libs/umeng-share-sina-simplify-7.0.3.jar')
     api files('libs/umeng-share-wechat-simplify-7.0.3.jar')
     api files('libs/umeng-shareboard-widget-7.0.3.jar')
-    api files('libs/utdid4all-1.5.2-proguard.jar')
+//    api files('libs/utdid4all-1.5.2-proguard.jar')
     api files('libs/vivoId-1.0.0.1.jar')
     api files('libs/umeng-share-core-7.0.3.jar')
     api files('libs/umeng-sharetool-7.0.3.jar')
-
 
 
     annotationProcessor rootProject.ext.dependencies["hilt-android-compiler"]
@@ -86,4 +89,22 @@ dependencies {
 
     api project(":commonapi")
 
+}
+
+uploadArchives {  // 本地nexus配置
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {  //http://192.168.31.138/
+            repository(url: 'http://127.0.0.1:8081/repository/dynamic') {
+                authentication(userName: 'admin', password: 'admin123')
+            }
+            pom.project {
+                version '1.0.0' //版本名称
+                artifactId 'umeng'  //和前面网站上填写的一样
+                groupId 'com.docker.umeng'  //和前面网站上填写的一样
+                packaging 'aar' //填写aar
+                description 'new version 1.0.0' //更新描述
+            }
+        }
+    }
 }

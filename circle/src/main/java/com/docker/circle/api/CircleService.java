@@ -30,4 +30,6 @@ public interface CircleService {
     @FormUrlEncoded
     LiveData<ApiResponse<BaseResponse<List<ServiceDataBean>>>> fechCircleInfoList(@FieldMap Map<String, String> params);
 
+
+
 }

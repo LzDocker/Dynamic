@@ -1,0 +1,96 @@
+println IsBuildMudle
+apply plugin: 'com.android.library'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi-v7a', 'x86', 'x86_64', 'arm64-v8a'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: rootProject.ext.android.applicationId,
+                JPUSH_APPKEY : rootProject.ext.push.JPUSH_APPKEY,
+                JPUSH_CHANNEL: rootProject.ext.push.JPUSH_CHANNEL
+        ]
+
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+            jni.srcDirs = []    //disable automatic ndk-build
+        }
+    }
+
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api rootProject.ext.dependencies["hilt-android"]
+    api rootProject.ext.dependencies["hilt-lifecycle-viewmodel"]
+    api rootProject.ext.dependencies["picture"]
+    annotationProcessor rootProject.ext.dependencies["hilt-android-compiler"]
+    annotationProcessor rootProject.ext.dependencies["hilt-compiler"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    annotationProcessor rootProject.ext.dependencies["room-compiler"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
+    annotationProcessor rootProject.ext.dependencies["autoservice"]
+
+    api project(":commonapi")
+
+}
+
+uploadArchives {  // 本地nexus配置
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {  //http://192.168.31.138/
+            repository(url: 'http://127.0.0.1:8081/repository/dynamic') {
+                authentication(userName: 'admin', password: 'admin123')
+            }
+            pom.project {
+                version '1.0.0' //版本名称
+                artifactId 'picture'  //和前面网站上填写的一样
+                groupId 'com.docker.picture'  //和前面网站上填写的一样
+                packaging 'aar' //填写aar
+                description 'new version 1.0.0' //更新描述
+            }
+        }
+    }
+}
+
+
+

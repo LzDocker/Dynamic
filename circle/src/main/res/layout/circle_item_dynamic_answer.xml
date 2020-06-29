@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.docker.circle.vo.Answer" />
+
+        <variable
+            name="viewmodel"
+            type="com.docker.cirlev2.vm.CircleDynamicListViewModel" />
+
+        <import type="com.docker.cirlev2.util.BdUtils" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/open_liner_bg_shape"
+        android:onClick="@{(view)->item.getOnItemClickListener().onItemClick(item,view)}"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="14dp"
+            android:paddingTop="12dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="@{item.content}"
+                        android:textColor="#121212"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="还没有人回答哦！"
+                        android:textSize="11sp"
+                        app:visibleGone="@{item.parent.commentUsers.size == 0}" />
+
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:layout_width="85dp"
+                    android:layout_height="65dp"
+                    android:layout_marginLeft="15dp"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{BdUtils.getCommentSingleImgv2(item.resource)}"
+                    app:visibleGone="@{item.resource.size() != 0}" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:visibleGone="@{item.parent.commentUsers.size != 0}">
+
+
+                <ImageView
+                    android:id="@+id/round_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="centerCrop"
+                    app:avaterImageUrl="@{BdUtils.getAnswerIcon(item)}"
+                    app:visibleGone="@{BdUtils.isShowAnswerIcon(item)}" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_username"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/iv_user_icon"
+                    android:text="@{BdUtils.getAnswerName(item)}"
+                    android:textColor="#979797"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <!--<de.hdodenhof.circleimageview.CircleImageView-->
+            <!--android:layout_width="25dp"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--app:errorImg="@{R.mipmap.circle_icon_empty}"-->
+            <!--app:placeHolder="@{R.mipmap.circle_icon_empty}"-->
+            <!--app:roundImgUrl="@{Constant.getCompleteImageUrl(item.avatar)}"-->
+            <!--app:visibleGone="@{item.extData.resource.size() != 0}" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                app:visibleGone="@{item.parent.commentUsers.size != 0}">
+
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="@{BdUtils.getAnswer(item)}"
+                    android:textColor="#333" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:visibleGone="@{item.parent.commentUsers.size != 0}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text='@{item.parent.commentNum+""}'
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="条回复"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:visibility="gone"
+            android:background="#fff4f5f6" />
+    </LinearLayout>
+</layout>

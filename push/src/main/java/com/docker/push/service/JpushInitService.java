@@ -2,6 +2,7 @@ package com.docker.push.service;
 
 import android.app.Application;
 
+import com.docker.core.base.BaseAppliction;
 import com.docker.core.service.ApplicationTaskInitService;
 import com.google.auto.service.AutoService;
 
@@ -15,7 +16,7 @@ public class JpushInitService implements ApplicationTaskInitService {
     }
 
     @Override
-    public void dispatcherApplication(Application application) {
+    public void dispatcherApplication(BaseAppliction application) {
         // 极光推送
        /* JPushInterface.setDebugMode(true);
         JPushInterface.init(application);

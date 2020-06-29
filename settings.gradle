@@ -1,3 +1,6 @@
+include ':mediaplayer'
+include ':upload'
+include ':picture'
 rootProject.name='Dynamic'
 include ':pay'
 include ':umeng'

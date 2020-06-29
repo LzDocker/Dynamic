@@ -3,6 +3,7 @@ package com.docker.commonapi.di;
 import android.util.Log;
 
 import com.docker.commonapi.api.CommonService;
+import com.docker.commonapi.converter.DynamicConverterFactory;
 import com.docker.core.utils.HttpRequestHandler;
 
 import java.util.ArrayList;
@@ -61,6 +62,7 @@ public class CommonApiNetConfig {
     @Provides
     public List<Converter.Factory> providerConvers() {
         List<Converter.Factory> mConverters = new ArrayList<>();
+        mConverters.add(DynamicConverterFactory.create());
         return mConverters;
     }
 

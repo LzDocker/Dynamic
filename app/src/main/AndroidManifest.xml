@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        
+
         <activity
             android:name=".ui.SplashActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
@@ -37,8 +37,20 @@
         <meta-data
             android:name="android.notch_support"
             android:value="true" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path" />
+        </provider>
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
+
 
 </manifest>

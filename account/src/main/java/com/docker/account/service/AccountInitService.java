@@ -1,8 +1,8 @@
 package com.docker.account.service;
 
-import android.app.Application;
 import android.util.Log;
 
+import com.docker.core.base.BaseAppliction;
 import com.docker.core.command.ReplyCommand;
 import com.docker.core.service.ApplicationTaskInitService;
 import com.google.auto.service.AutoService;
@@ -17,7 +17,7 @@ public class AccountInitService implements ApplicationTaskInitService {
 
 
     @Override
-    public void dispatcherApplication(Application application) {
+    public void dispatcherApplication(BaseAppliction application) {
 
     }
 
@@ -32,4 +32,5 @@ public class AccountInitService implements ApplicationTaskInitService {
             Log.d("TAG", "GetReplyCommand: =====================account 初始化完成");
         };
     }
+
 }

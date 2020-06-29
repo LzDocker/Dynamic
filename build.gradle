@@ -5,12 +5,14 @@ buildscript {
     repositories {
         google()
 //        jcenter()
-        maven { url "https://jitpack.io" }
+        maven { url 'https://jitpack.io' }
 
-        maven{ url'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+
+        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
 
         maven { url 'https://maven.aliyun.com/repository/releases' }
+
         maven {
             url "http://maven.aliyun.com/nexus/content/repositories/releases"
         }
@@ -41,10 +43,10 @@ allprojects {
             url "https://androidx.dev/snapshots/builds/6543454/artifacts/repository/"
         }
         mavenCentral()
-//        flatDir {
-//            dirs project(':lib_opensource').file('../lib_opensource/libs')
-//            dirs project(':lib_video').file('../lib_video/libs')
-//        }
+        flatDir {
+            dirs project(':umeng').file('../umeng/libs')
+            dirs project(':pay').file('../pay/libs')
+        }
     }
 }
 

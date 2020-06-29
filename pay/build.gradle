@@ -1,6 +1,7 @@
 println IsBuildMudle
 apply plugin: 'com.android.library'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -56,7 +57,9 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api(name: "alipaySdk-15.6.0-20190226104053", ext: "aar")
 
     api files('libs/wechat-sdk-android-without-mta-5.1.4.jar')
     api rootProject.ext.dependencies["hilt-android"]
@@ -73,5 +76,24 @@ dependencies {
     api project(":commonapi")
 
 }
+
+uploadArchives {  // 本地nexus配置
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {  //http://192.168.31.138/
+            repository(url: 'http://127.0.0.1:8081/repository/dynamic') {
+                authentication(userName: 'admin', password: 'admin123')
+            }
+            pom.project {
+                version '1.0.0' //版本名称
+                artifactId 'pay'  //和前面网站上填写的一样
+                groupId 'com.docker.pay'  //和前面网站上填写的一样
+                packaging 'aar' //填写aar
+                description 'new version 1.0.0' //更新描述
+            }
+        }
+    }
+}
+
 
 

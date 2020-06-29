@@ -1,8 +1,8 @@
 package com.docker.core.service;
 
-import android.app.Application;
 import android.util.Log;
 
+import com.docker.core.base.BaseAppliction;
 import com.docker.core.command.ReplyCommand;
 
 /*
@@ -17,7 +17,7 @@ public interface ApplicationTaskInitService {
     public int getInitLevel();
 
 
-    public void dispatcherApplication(Application application);
+    public void dispatcherApplication(BaseAppliction application);
 
     /*
      * 开始初始化
@@ -31,4 +31,5 @@ public interface ApplicationTaskInitService {
             Log.d("core", "GetReplyCommand: ==============" + getInitLevel() + "==初始化完成");
         };
     }
+
 }

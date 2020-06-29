@@ -28,7 +28,6 @@ import com.docker.dynamic.databinding.AppFragmentFrameBinding;
 
 public class IndexBlockSampleFragmentV2 extends NitCommonFragment<EmptyViewModel, AppFragmentFrameBinding> {
 
-
     public static IndexBlockSampleFragmentV2 getInstance() {
         return new IndexBlockSampleFragmentV2();
     }

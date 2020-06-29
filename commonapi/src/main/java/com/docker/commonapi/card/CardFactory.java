@@ -1,8 +1,6 @@
 package com.docker.commonapi.card;
 
-import android.util.Log;
-
-import com.docker.commonapi.service.CardProviderService;
+import com.docker.common.model.card.CardMarkService;
 
 import java.util.ServiceLoader;
 
@@ -17,9 +15,9 @@ public class CardFactory {
     }
 
     public void getCardList() {
-        ServiceLoader<CardProviderService> cardProviderServices = ServiceLoader.load(CardProviderService.class);
-        for (CardProviderService cardProviderService : cardProviderServices) {
-            Log.d("TAG", "getCardList: ============" + cardProviderService.getInitLevel());
+        ServiceLoader<CardMarkService> cardMarkServices = ServiceLoader.load(CardMarkService.class);
+        for (CardMarkService cardMarkService : cardMarkServices) {
+
         }
     }
 

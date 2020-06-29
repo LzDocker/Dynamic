@@ -19,10 +19,13 @@
             <option value="$PROJECT_DIR$/component_country" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/design" />
+            <option value="$PROJECT_DIR$/mediaplayer" />
             <option value="$PROJECT_DIR$/message" />
             <option value="$PROJECT_DIR$/pay" />
+            <option value="$PROJECT_DIR$/picture" />
             <option value="$PROJECT_DIR$/push" />
             <option value="$PROJECT_DIR$/umeng" />
+            <option value="$PROJECT_DIR$/upload" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

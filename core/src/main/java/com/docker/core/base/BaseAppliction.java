@@ -44,7 +44,6 @@ public abstract class BaseAppliction extends Application {
         }
     }
 
-
     //禁止app字体大小跟随系统字体大小调节
     @Override
     public Resources getResources() {

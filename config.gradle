@@ -84,6 +84,9 @@ ext {
             "jpush"                      : 'cn.jiguang.sdk:jpush:3.6.6',
             "jcore"                      : 'cn.jiguang.sdk:jcore:2.3.8',
 
+            "picture"                    : 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3',
+            "shortcut"                   : 'me.leolin:ShortcutBadger:1.1.22@aar',
+
 
             ///////////////////////////////////////////
 
@@ -92,8 +95,6 @@ ext {
             "richedit"                   : 'jp.wasabeef:richeditor-android:1.2.2',
 
 
-            "shortcut"                   : 'me.leolin:ShortcutBadger:1.1.22@aar',
-            "picture"                    : 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3',
             "banner"                     : 'com.youth.banner:banner:1.4.10',
             "picker"                     : 'com.github.gzu-liyujiang.AndroidPicker:WheelPicker:1.5.6',
             "goodview"                   : 'com.wx.goodview:goodview:1.0.0',

@@ -16,6 +16,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.docker.common.ui.base.NitCommonActivity;
 import com.docker.commonapi.anno.PagerPrivoderKeys;
 import com.docker.commonapi.router.RouterManager;
+import com.docker.core.base.BaseAppliction;
 import com.docker.core.command.ReplyCommand;
 import com.docker.core.service.ApplicationTaskInitService;
 import com.google.auto.service.AutoService;
@@ -31,7 +32,7 @@ public class CommonApiInitService implements ApplicationTaskInitService {
     }
 
     @Override
-    public void dispatcherApplication(Application application) {
+    public void dispatcherApplication(BaseAppliction application) {
         application.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
@@ -86,7 +87,6 @@ public class CommonApiInitService implements ApplicationTaskInitService {
         });
     }
 
-
     private void handActivity(Activity activity) {
         if (activity instanceof FragmentActivity) {
             ((FragmentActivity) activity).getSupportFragmentManager()
@@ -115,7 +115,6 @@ public class CommonApiInitService implements ApplicationTaskInitService {
 
     @Override
     public void Start() {
-
 
     }
 

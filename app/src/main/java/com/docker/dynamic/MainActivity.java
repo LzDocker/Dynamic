@@ -10,7 +10,9 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.docker.common.ui.base.NitCommonActivity;
 import com.docker.core.base.BaseActivity;
 import com.docker.core.di.test.AnalyticsService;
+import com.docker.core.utils.FragmentUtils;
 import com.docker.dynamic.databinding.ActivityMainBinding;
+import com.docker.dynamic.ui.test.IndexBlockSampleFragmentV2;
 import com.docker.dynamic.vm.MainViewModel;
 
 import javax.inject.Inject;
@@ -94,6 +96,7 @@ public class MainActivity extends NitCommonActivity<MainViewModel, ActivityMainB
     @Override
     public void initView() {
 
+        FragmentUtils.add(getSupportFragmentManager(), IndexBlockSampleFragmentV2.getInstance(), R.id.frame);
     }
 
     @Override
