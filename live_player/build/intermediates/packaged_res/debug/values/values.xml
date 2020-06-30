@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="biz_audio_progress_first">#ffffff</color>
+    <color name="biz_audio_progress_second">#6b6666</color>
+    <color name="black">#000000</color>
+    <color name="colorGray4">#787878</color>
+    <color name="colorTintRed">#FF4C58</color>
+    <color name="default_bg">#aa000000</color>
+    <color name="super_vod_vtt_bg">#7E000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <dimen name="media_controller_view_height">48dip</dimen>
+    <string name="app_name">superplayer</string>
+    <string name="btn_cancel">取消</string>
+    <string name="btn_ok">确定</string>
+    <string name="scancode_tip">二维码播放地址错误，请检查！</string>
+    <string name="vod_exo">exo</string>
+    <string name="vod_ffplay">ffplay</string>
+    <style name="AppBaseTheme" parent="android:Theme.Black.NoTitleBar">
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!--<item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/colorAccent</item>-->
+        <!--<item name="android:windowBackground">@color/colorActivityBackground</item>-->
+    </style>
+    <declare-styleable name="TCPointSeekBar">
+        <attr format="reference" name="psb_thumbBackground"/>
+        <attr format="color" name="psb_backgroundColor"/>
+        <attr format="color" name="psb_progressColor"/>
+        <attr format="integer" name="psb_progress"/>
+        <attr format="integer" name="psb_max"/>
+        <attr format="dimension" name="psb_progressHeight"/>
+    </declare-styleable>
+</resources>

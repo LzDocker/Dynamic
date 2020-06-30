@@ -1,0 +1,141 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.tencent.liteav.demo.lvb"
+4    android:versionCode="100"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml
+10
+11    <uses-feature android:name="android.hardware.camera" />
+11-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:40:5-60
+11-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:40:19-57
+12    <uses-feature android:name="android.hardware.camera.autofocus" />
+12-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:41:5-70
+12-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:41:19-67
+13
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:42:5-67
+14-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:42:22-64
+15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+15-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:43:5-79
+15-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:43:22-76
+16    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+16-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:44:5-76
+16-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:44:22-73
+17    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+17-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:45:5-75
+17-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:45:22-72
+18    <uses-permission android:name="android.permission.CALL_PHONE" />
+18-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:46:5-69
+18-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:46:22-66
+19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+19-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:47:5-81
+19-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:47:22-78
+20    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+20-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:48:5-80
+20-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:48:22-77
+21    <uses-permission android:name="android.permission.READ_LOGS" />
+21-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:49:5-68
+21-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:49:22-65
+22    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+22-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:50:5-71
+22-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:50:22-68
+23    <uses-permission android:name="android.permission.CAMERA" />
+23-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:51:5-65
+23-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:51:22-62
+24    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
+24-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:52:5-79
+24-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:52:22-76
+25    <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
+25-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:53:5-79
+25-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:53:22-76
+26    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+26-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:55:5-80
+26-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:55:22-77
+27    <uses-permission android:name="android.permission.BLUETOOTH" />
+27-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:56:5-68
+27-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:56:22-65
+28    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+28-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:58:5-78
+28-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:58:22-75
+29    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+29-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:59:5-79
+29-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:59:22-76
+30    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+30-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:61:5-73
+30-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:61:22-70
+31
+32    <application android:theme="@style/AppTheme" >
+32-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:4:5-39:19
+32-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:4:18-49
+33        <activity
+33-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:6:9-8:52
+34            android:name="com.tencent.liteav.demo.lvb.common.activity.QRCodeScanActivity"
+34-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:7:13-63
+35            android:screenOrientation="portrait" />
+35-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:8:13-49
+36        <activity
+36-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:9:9-12:67
+37            android:name="com.tencent.liteav.demo.lvb.camerapush.CameraPusherActivity"
+37-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:10:13-60
+38            android:configChanges="keyboardHidden|orientation|screenSize"
+38-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:11:13-74
+39            android:windowSoftInputMode="adjustPan|stateHidden" />
+39-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:12:13-64
+40        <activity
+40-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:13:9-16:67
+41            android:name="com.tencent.liteav.demo.lvb.camerapush.LivePublisherSurfaceActivity"
+41-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:14:13-68
+42            android:configChanges="keyboardHidden|orientation|screenSize"
+42-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:15:13-74
+43            android:windowSoftInputMode="adjustPan|stateHidden" />
+43-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:16:13-64
+44        <activity
+44-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:17:9-19:52
+45            android:name="com.tencent.liteav.demo.lvb.liveplayer.LivePlayerActivity"
+45-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:18:13-58
+46            android:screenOrientation="portrait" />
+46-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:19:13-49
+47        <activity
+47-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:20:9-22:52
+48            android:name="com.tencent.liteav.demo.lvb.liveplayer.LivePlayerSurfaceActivity"
+48-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:21:13-65
+49            android:screenOrientation="portrait" />
+49-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:22:13-49
+50        <activity
+50-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:23:9-28:59
+51            android:name="com.tencent.liteav.demo.lvb.liveroom.ui.LiveRoomActivity"
+51-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:24:13-57
+52            android:label="@string/title_activity_rtmp_room_demo"
+52-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:25:13-66
+53            android:screenOrientation="portrait"
+53-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:26:13-49
+54            android:theme="@style/RtmproomActivityTheme"
+54-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:27:13-57
+55            android:windowSoftInputMode="adjustNothing" />
+55-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:28:13-56
+56
+57        <provider
+57-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:30:9-38:20
+58            android:name="androidx.core.content.FileProvider"
+58-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:31:13-62
+59            android:authorities="com.docker.live"
+59-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:32:13-50
+60            android:exported="false"
+60-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:33:13-37
+61            android:grantUriPermissions="true" >
+61-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:34:13-47
+62            <meta-data
+62-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:35:13-37:54
+63                android:name="android.support.FILE_PROVIDER_PATHS"
+63-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:36:17-67
+64                android:resource="@xml/file_paths" />
+64-->/Users/zhangxindang/source/Dynamic/live_lvb/src/main/AndroidManifest.xml:37:17-51
+65        </provider>
+66    </application>
+67
+68</manifest>

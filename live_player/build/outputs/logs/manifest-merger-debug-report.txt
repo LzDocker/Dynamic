@@ -1,0 +1,81 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:1:1-30:12
+INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:1:1-30:12
+INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:1:1-30:12
+INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:1:1-30:12
+INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:1:1-30:12
+INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:1:1-30:12
+INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:1:1-30:12
+	package
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:2:5-45
+		INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+		INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:1:1-30:12
+		INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:1:1-30:12
+		INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:1:11-69
+application
+ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:4:5-28:19
+	android:theme
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:4:18-49
+activity#com.tencent.liteav.demo.player.superplayer.SuperPlayerActivity
+ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:5:9-18:20
+	android:screenOrientation
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:10:13-49
+	android:label
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:8:13-45
+	android:launchMode
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:9:13-44
+	android:windowSoftInputMode
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:11:13-54
+	android:configChanges
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:7:13-74
+	android:name
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:6:13-60
+intent-filter#action:name:android.intent.action.MAIN+action:name:com.tencent.liteav.demo.play.action.float.click+category:name:android.intent.category.DEFAULT
+ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:12:13-17:29
+action#com.tencent.liteav.demo.play.action.float.click
+ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:13:17-90
+	android:name
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:13:25-87
+action#android.intent.action.MAIN
+ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.DEFAULT
+ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:16:17-76
+	android:name
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:16:27-73
+activity#com.tencent.liteav.demo.player.VodPlayerActivity
+ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:20:9-22:52
+	android:screenOrientation
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:22:13-49
+	android:name
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:21:13-46
+activity#com.tencent.liteav.demo.player.common.activity.QRCodeScanActivity
+ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:24:9-26:48
+	android:screenOrientation
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:26:9-45
+	android:name
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml:25:9-59
+uses-sdk
+INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+		INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+		ADDED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml
+		INJECTED from /Users/zhangxindang/source/Dynamic/live_player/src/main/AndroidManifest.xml

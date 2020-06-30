@@ -1,3 +1,8 @@
+include ':live_player'
+include ':live_lvb'
+include ':live_libsuperplayer'
+include ':live_beauty'
+include ':live'
 include ':mediaplayer'
 include ':upload'
 include ':picture'

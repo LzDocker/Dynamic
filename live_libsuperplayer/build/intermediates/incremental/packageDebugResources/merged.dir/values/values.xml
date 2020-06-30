@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="biz_audio_progress_bg">#00b2ff</color>
+    <color name="biz_audio_progress_first">#ffffff</color>
+    <color name="biz_audio_progress_second">#6b6666</color>
+    <color name="black">#000000</color>
+    <color name="black_a10_color">#1a000000</color>
+    <color name="colorGray4">#787878</color>
+    <color name="colorTintRed">#FF4C58</color>
+    <color name="default_bg">#aa000000</color>
+    <color name="default_progress_background_color">#BBBBBB</color>
+    <color name="default_progress_color">#FF4081</color>
+    <color name="super_vod_vtt_bg">#7E000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <dimen name="live_btn_size">35dp</dimen>
+    <dimen name="media_controller_bottom_margin">12dip</dimen>
+    <dimen name="media_controller_button_height">52dip</dimen>
+    <dimen name="media_controller_button_width">71dip</dimen>
+    <dimen name="media_controller_resolution_text_height">44dp</dimen>
+    <dimen name="media_controller_resolution_text_width">300dp</dimen>
+    <dimen name="media_controller_seekbar_height">32dip</dimen>
+    <dimen name="media_controller_seekbar_width">32dip</dimen>
+    <dimen name="media_controller_text_size">14sp</dimen>
+    <dimen name="media_controller_top_margin">80dip</dimen>
+    <dimen name="media_controller_view_height">48dip</dimen>
+    <dimen name="media_panel_width">330dp</dimen>
+    <string name="app_name">libsuperplayer</string>
+    <style name="AppProgressBarStyle">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/layer_list_progress_bar</item>
+        <!--<item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>-->
+    </style>
+    <style name="RadiobuttonStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:button">@null</item>
+    </style>
+    <declare-styleable name="TCPointSeekBar">
+        <attr format="reference" name="psb_thumbBackground"/>
+        <attr format="color" name="psb_backgroundColor"/>
+        <attr format="color" name="psb_progressColor"/>
+        <attr format="integer" name="psb_progress"/>
+        <attr format="integer" name="psb_max"/>
+        <attr format="dimension" name="psb_progressHeight"/>
+    </declare-styleable>
+</resources>

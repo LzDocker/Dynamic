@@ -37,7 +37,7 @@ public class JpushServiceImpl implements JpushService {
     // 激光设置
     private void setAlias() {
         UserInfoVo userInfoVo = CacheUtils.getUser();
-        if (!"-1".equals(userInfoVo.uuid)) {
+        if (userInfoVo != null && !"-1".equals(userInfoVo.uuid)) {
             String alias = userInfoVo.uuid;
             if (TextUtils.isEmpty(alias)) {
                 return;
@@ -47,7 +47,6 @@ public class JpushServiceImpl implements JpushService {
             }
             mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, alias));
         }
-
     }
 
     private String TAG = "jiguang";

@@ -24,4 +24,6 @@ public class RouterConstKey {
     public static final String UMENG_SERVER = "/UMENG/umeng_service";
 
 
+    // live
+    public static final String LIVE_INDEX = "LIVE_INDEX";
 }

@@ -3,13 +3,16 @@ apply from: "config.gradle"
 
 buildscript {
     repositories {
+
+        jcenter()
+
         google()
-//        jcenter()
+
         maven { url 'https://jitpack.io' }
 
-        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
 
-        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
 
         maven { url 'https://maven.aliyun.com/repository/releases' }
 
@@ -32,10 +35,10 @@ buildscript {
 
 allprojects {
     repositories {
+        jcenter()
         google()
-//        jcenter()
-        maven{ url'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
         maven { url 'https://jitpack.io' }
         maven { url "http://maven.aliyun.com/nexus/content/repositories/releases" }
         maven { url 'https://maven.aliyun.com/repository/releases' }
@@ -46,6 +49,8 @@ allprojects {
         flatDir {
             dirs project(':umeng').file('../umeng/libs')
             dirs project(':pay').file('../pay/libs')
+            dirs project(':live').file('../live/libs')
+            dirs project(':live_player').file('../live_player/libs')
         }
     }
 }
