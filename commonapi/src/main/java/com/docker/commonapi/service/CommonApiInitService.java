@@ -26,6 +26,11 @@ import java.util.HashMap;
 @AutoService(ApplicationTaskInitService.class)
 public class CommonApiInitService implements ApplicationTaskInitService {
 
+
+    public CommonApiInitService(String name) {
+        Log.d("TAG", "CommonApiInitService: =====================");
+    }
+
     @Override
     public int getInitLevel() {
         return 0;

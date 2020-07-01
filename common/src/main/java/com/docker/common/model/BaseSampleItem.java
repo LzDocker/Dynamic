@@ -11,7 +11,6 @@ public abstract class BaseSampleItem extends BaseItem {
 // 新增测试模式点击事件
     @Override
     public OnItemClickListener getOnItemClickListener() {
-
         return null;
     }
 
