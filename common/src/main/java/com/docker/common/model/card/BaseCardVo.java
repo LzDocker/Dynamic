@@ -19,6 +19,13 @@ import java.util.HashMap;
  * */
 public abstract class BaseCardVo<T> extends BaseSampleItem {
 
+
+    public int style = 0;
+
+    public int position = 0;
+
+    public int maxSupport = 1;
+
     /*
      * 默认card 配置
      * */
@@ -33,7 +40,6 @@ public abstract class BaseCardVo<T> extends BaseSampleItem {
      * 请求失败也展示card
      * */
     public boolean isNoNetNeed = true;
-
 
 
     public void upDateParam(HashMap<String, String> RepParamMap, boolean isAllReplace) {
@@ -54,25 +60,13 @@ public abstract class BaseCardVo<T> extends BaseSampleItem {
     public transient MediatorLiveData<T> mCardVoLiveData = new MediatorLiveData<>();
 
 
-    public BaseCardVo(int style, int position) {
-        this.style = style;
-        this.position = position;
-    }
 
-
-    public BaseCardVo(CardApiOptions cardApiOptions) {
-
+    public BaseCardVo BindApiOptions(CardApiOptions cardApiOptions) {
         this.style = cardApiOptions.style;
         this.position = cardApiOptions.position;
         this.mDefcardApiOptions = cardApiOptions;
-
+        return this;
     }
-
-    public int style = 0;
-
-    public int position = 0;
-
-    public int maxSupport = 1;
 
 
     public void onChangeStyleClick(BaseCardVo item, View view, NitCommonListVm viewModel) {
@@ -124,5 +118,7 @@ public abstract class BaseCardVo<T> extends BaseSampleItem {
     }
 
     public void initParam(Object o) {
-    };
+    }
+
+    ;
 }

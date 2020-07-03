@@ -4,11 +4,12 @@ import androidx.databinding.ObservableInt;
 
 import com.docker.common.model.card.BaseCardVo;
 import com.docker.core.command.ReplyCommand;
+
 import java.util.HashMap;
 
 public abstract class BaseSampleItem extends BaseItem {
 
-// 新增测试模式点击事件
+    // 新增测试模式点击事件
     @Override
     public OnItemClickListener getOnItemClickListener() {
         return null;

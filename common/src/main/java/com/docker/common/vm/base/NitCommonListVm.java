@@ -106,6 +106,7 @@ public abstract class NitCommonListVm<T> extends NitCommonVm {
         } else {
             itemBinding.set(BR.item, item.getItemLayout());
         }
+
     };
 
     // itembinding

@@ -1,14 +1,12 @@
 package com.docker.common.model.form;
 
 import com.docker.common.model.BaseSampleItem;
+import com.docker.common.model.apiconfig.FormApiOptions;
 
-public class BaseFormVo extends BaseSampleItem {
+public abstract class BaseFormVo extends BaseSampleItem {
 
+    public FormApiOptions mFormApiOptions;
 
-    @Override
-    public int getItemLayout() {
-        return 0;
-    }
-
+    public abstract Object getFormVlaue();
 
 }

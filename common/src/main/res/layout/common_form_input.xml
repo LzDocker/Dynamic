@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="item"
+            type="com.docker.common.model.form.input.InputFormVo" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        android:background="@drawable/design_liner_bg_shape"
+        >
+
+        <ImageView
+            android:layout_width="45dp"
+            android:src="@mipmap/design_account_lock"
+            android:scaleType="centerInside"
+            android:layout_height="45dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="lable:"
+            android:layout_marginRight="14dp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@color/design_white"
+            android:minHeight="45dp" />
+
+        <ImageView
+            android:layout_width="45dp"
+            android:src="@mipmap/design_account_lock"
+            android:scaleType="centerInside"
+            android:layout_height="45dp"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+</layout>

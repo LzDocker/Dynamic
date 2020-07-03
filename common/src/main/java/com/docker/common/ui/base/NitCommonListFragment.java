@@ -83,6 +83,7 @@ public abstract class NitCommonListFragment<VM extends NitCommonListVm> extends 
             initRefreshUi();
             initListener();
         }
+        mBinding.get().recyclerView.setItemAnimator(null);
     }
 
     public void initListener() {
